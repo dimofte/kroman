@@ -21,6 +21,7 @@ export default class RomanNumber {
     NUMBER_NOT_INTEGER: 'NUMBER_NOT_INTEGER',
     OUTSIDE_RANGE: 'OUTSIDE_RANGE',
     LETTER_OVERUSED: 'LETTER_OVERUSED',
+    INVALID_CHARACTERS: 'INVALID_CHARACTERS',
   };
 
   valueKey = Symbol();

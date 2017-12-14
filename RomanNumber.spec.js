@@ -24,7 +24,12 @@ describe('Roman Numerals', () => {
       expect(new RomanNumber(2999).toString()).toEqual('MMCMXCIX');
       expect(new RomanNumber(3000).toString()).toEqual('MMM');
     });
-    it('should throw if arabic numerals are out of range', () => {
+    it('should throw if roman string contains invalid characters', () => {
+      expect(() => new RomanNumber('1473')).toThrow(errorTypes.INVALID_CHARACTERS);
+      expect(() => new RomanNumber('CD1X')).toThrow(errorTypes.INVALID_CHARACTERS);
+      expect(() => new RomanNumber('error')).toThrow(errorTypes.INVALID_CHARACTERS);
+    });
+    it('should throw if a roman letter is used more than 3 times in a row', () => {
       expect(() => new RomanNumber('IIII')).toThrow(errorTypes.LETTER_OVERUSED);
       expect(() => new RomanNumber('MMMMDMXCIX')).toThrow(errorTypes.LETTER_OVERUSED);
     });

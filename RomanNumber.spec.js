@@ -15,11 +15,11 @@ describe('Roman Numerals', () => {
       expect(() => new RomanNumber(10000)).toThrow(errorTypes.OUTSIDE_RANGE);
     });
     it('should return roman numerals for (base 10) arabic', () => {
-      return;
       expect(new RomanNumber(1).toString()).toEqual('I');
       expect(new RomanNumber(3).toString()).toEqual('III');
-      expect(new RomanNumber(4).toString()).toEqual('IV');
+      return;
       expect(new RomanNumber(5).toString()).toEqual('V');
+      expect(new RomanNumber(4).toString()).toEqual('IV');
 
       expect(new RomanNumber(1968).toString()).toEqual('MCMLXVIII');
       expect(new RomanNumber(1473).toString()).toEqual('MCDLXXIII');

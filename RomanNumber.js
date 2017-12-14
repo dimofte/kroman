@@ -54,18 +54,20 @@ export default class RomanNumber {
   }
 
   toString() {
-    return romanGroups.reduce((accu, crt) => {
+    const accumulatedRoman = romanGroups.reduce((accu, crt) => {
       const { arabic, roman } = crt;
       const { aa, ar } = accu;
       console.log({ ar, aa, arabic, roman });
       return {
         aa: aa % arabic,
-        ar: ar + arabic / roman > 0 ? roman : '',
+        ar: ar + (Math.floor(aa / arabic) > 0 ? roman : ''),
       }
     }, {
-      aa: this[this.valueKey],
-      ar: '',
-    }).ar;
+      aa: this[this.valueKey], // aa = accumulator arabic
+      ar: '', // ar = accumulator roman
+    });
+    console.log(accumulatedRoman);
+    return accumulatedRoman.ar;
   }
 
   toInt() {

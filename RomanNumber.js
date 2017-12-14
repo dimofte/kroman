@@ -20,6 +20,7 @@ export default class RomanNumber {
     VALUE_REQUIRED: 'VALUE_REQUIRED',
     NUMBER_NOT_INTEGER: 'NUMBER_NOT_INTEGER',
     OUTSIDE_RANGE: 'OUTSIDE_RANGE',
+    LETTER_OVERUSED: 'LETTER_OVERUSED',
   };
 
   valueKey = Symbol();

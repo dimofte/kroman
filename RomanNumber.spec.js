@@ -19,11 +19,23 @@ describe('Roman Numerals', () => {
       expect(new RomanNumber(3).toString()).toEqual('III');
       expect(new RomanNumber(5).toString()).toEqual('V');
       expect(new RomanNumber(4).toString()).toEqual('IV');
-
       expect(new RomanNumber(1968).toString()).toEqual('MCMLXVIII');
       expect(new RomanNumber(1473).toString()).toEqual('MCDLXXIII');
       expect(new RomanNumber(2999).toString()).toEqual('MMCMXCIX');
       expect(new RomanNumber(3000).toString()).toEqual('MMM');
+    });
+    it('should throw if arabic numerals are out of range', () => {
+      expect(() => new RomanNumber('IIII')).toThrow(errorTypes.LETTER_OVERUSED);
+      expect(() => new RomanNumber('MMMMDMXCIX')).toThrow(errorTypes.LETTER_OVERUSED);
+    });
+    it('should return arabic numbers for roman ones', () => {
+      expect(new RomanNumber('I').toInt()).toEqual(1);
+      expect(new RomanNumber('III').toInt()).toEqual(3);
+      expect(new RomanNumber('IV').toInt()).toEqual(4);
+      expect(new RomanNumber('CDXXIX').toInt()).toEqual();
+      expect(new RomanNumber('MCDLXXXII').toInt()).toEqual(1);
+      expect(new RomanNumber('MCMLXXX').toInt()).toEqual(1);
+      expect(new RomanNumber('MMMMCMXCIX').toInt()).toEqual(1);
     });
   });
 

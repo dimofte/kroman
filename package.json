@@ -1,6 +1,6 @@
 {
   "name": "kroman",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Technical test: a library to convert arabic to roman and viceversa",
   "main": "RomanNumber.js",
   "scripts": {

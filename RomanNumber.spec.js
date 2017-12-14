@@ -1,6 +1,4 @@
-import RomanNumber from './RomanNumber';
-
-const { errorTypes } = RomanNumber;
+import RomanNumber, { romanNumberErrors as errorTypes } from './RomanNumber';
 
 describe('Roman Numerals', () => {
 
@@ -68,6 +66,11 @@ describe('Roman Numerals', () => {
 
     it('should return arabic numerals for arabic input', () => {
       expect(new RomanNumber(3).toInt()).toEqual(3);
+    });
+
+    it('should accept being called without the "new" operator', () => {
+      expect(RomanNumber(1).toString()).toEqual('I');
+      expect(() => RomanNumber('IIII')).toThrow(errorTypes.INVALID_NUMERAL);
     });
   });
 });

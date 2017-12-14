@@ -21,7 +21,7 @@ const romanLetters = romanGroups.filter(
 ); // { M: 1000, D: 500 ... }
 
 
-export default class RomanNumber {
+class RomanNumber {
 
   static errorTypes = {
     VALUE_REQUIRED: 'VALUE_REQUIRED',
@@ -118,3 +118,12 @@ export default class RomanNumber {
       .number;
   }
 }
+
+// rats... I noticed this requirement too late:
+// "If the library is called as a function (i.e. without the new prefix),
+// ensure you still pass back a new object"
+function RomanNumberWrapper(value) {
+  return new RomanNumber(value);
+}
+export const romanNumberErrors = RomanNumber.errorTypes;
+export default RomanNumberWrapper;

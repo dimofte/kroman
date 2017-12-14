@@ -13,6 +13,10 @@ const romanGroups = [
   { roman: 'IV', arabic: 4 },
   { roman: 'I',  arabic: 1 },
 ];
+const romanLetters = romanGroups.filter(
+  group => group.roman.length === 1
+);
+
 
 export default class RomanNumber {
 
@@ -67,6 +71,10 @@ export default class RomanNumber {
   }
 
   toString() {
+    const value = this[this.valueKey];
+    if (typeof value === 'string') {
+      return value;
+    }
     const accumulatedRoman = romanGroups.reduce((accu, crt) => {
       const { arabic, roman } = crt;
       const { aa, ar } = accu;
@@ -77,13 +85,17 @@ export default class RomanNumber {
         ar: ar + (Array(Math.floor(aa / arabic)).fill(roman)).join(''),
       }
     }, {
-      aa: this[this.valueKey], // aa = accumulator arabic
+      aa: value, // aa = accumulator arabic
       ar: '', // ar = accumulator roman
     });
     return accumulatedRoman.ar;
   }
 
   toInt() {
+    const value = this[this.valueKey];
+    if (typeof value === 'number') {
+      return value;
+    }
 
   }
 }

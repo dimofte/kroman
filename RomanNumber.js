@@ -20,9 +20,23 @@ export default class RomanNumber {
     VALUE_REQUIRED: 'VALUE_REQUIRED',
     NUMBER_NOT_INTEGER: 'NUMBER_NOT_INTEGER',
     OUTSIDE_RANGE: 'OUTSIDE_RANGE',
-    LETTER_OVERUSED: 'LETTER_OVERUSED',
-    INVALID_CHARACTERS: 'INVALID_CHARACTERS',
+    INVALID_NUMERAL: 'INVALID_NUMERAL',
   };
+
+  static validateArabicNumber(value) {
+    if (!Number.isInteger(value)) {
+      throw new Error(RomanNumber.errorTypes.NUMBER_NOT_INTEGER);
+    }
+    if (value < 1 || value > 3999) {
+      throw new Error(RomanNumber.errorTypes.OUTSIDE_RANGE);
+    }
+  }
+
+  static validateRomanString(value) {
+    if (!value.match(/^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/)) {
+      throw new Error(RomanNumber.errorTypes.INVALID_NUMERAL);
+    }
+  }
 
   valueKey = Symbol();
 
@@ -36,18 +50,15 @@ export default class RomanNumber {
       throw new Error(RomanNumber.errorTypes.VALUE_REQUIRED);
     }
 
-    if (typeof(value === 'number')) {
+    if (typeof value === 'number') {
       RomanNumber.validateArabicNumber(value);
       this[this.valueKey] = value;
+      return;
     }
-  }
 
-  static validateArabicNumber(value) {
-    if (!Number.isInteger(value)) {
-      throw new Error(RomanNumber.errorTypes.NUMBER_NOT_INTEGER);
-    }
-    if (value < 1 || value > 3999) {
-      throw new Error(RomanNumber.errorTypes.OUTSIDE_RANGE);
+    if (typeof value === 'string') {
+      RomanNumber.validateRomanString(value);
+      this[this.valueKey] = value;
     }
   }
 

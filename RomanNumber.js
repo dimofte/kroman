@@ -57,16 +57,16 @@ export default class RomanNumber {
     const accumulatedRoman = romanGroups.reduce((accu, crt) => {
       const { arabic, roman } = crt;
       const { aa, ar } = accu;
-      console.log({ ar, aa, arabic, roman });
       return {
         aa: aa % arabic,
-        ar: ar + (Math.floor(aa / arabic) > 0 ? roman : ''),
+        // eg: if arabic is 2000, it creates an array of 2 elements, fills it with 'M' and
+        // joins elements into a string 'MM', which is concatenated to the accumulator string
+        ar: ar + (Array(Math.floor(aa / arabic)).fill(roman)).join(''),
       }
     }, {
       aa: this[this.valueKey], // aa = accumulator arabic
       ar: '', // ar = accumulator roman
     });
-    console.log(accumulatedRoman);
     return accumulatedRoman.ar;
   }
 

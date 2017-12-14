@@ -17,13 +17,12 @@ describe('Roman Numerals', () => {
     it('should return roman numerals for (base 10) arabic', () => {
       expect(new RomanNumber(1).toString()).toEqual('I');
       expect(new RomanNumber(3).toString()).toEqual('III');
-      return;
       expect(new RomanNumber(5).toString()).toEqual('V');
       expect(new RomanNumber(4).toString()).toEqual('IV');
 
       expect(new RomanNumber(1968).toString()).toEqual('MCMLXVIII');
       expect(new RomanNumber(1473).toString()).toEqual('MCDLXXIII');
-      expect(new RomanNumber(2999).toString()).toEqual('MMCMXCIX'); // or IMMM ?
+      expect(new RomanNumber(2999).toString()).toEqual('MMCMXCIX');
       expect(new RomanNumber(3000).toString()).toEqual('MMM');
     });
   });

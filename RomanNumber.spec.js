@@ -36,18 +36,17 @@ describe('Roman Numerals', () => {
 
     it('should throw if a roman letter is used more than 3 times in a row', () => {
       expect(() => new RomanNumber('IIII')).toThrow(errorTypes.INVALID_NUMERAL);
+      expect(() => new RomanNumber('MMMMCMXCIX')).toThrow(errorTypes.INVALID_NUMERAL);
       expect(() => new RomanNumber('MMMMDMXCIX')).toThrow(errorTypes.INVALID_NUMERAL);
     });
 
     it('should return arabic numbers for roman ones', () => {
-      return;
       expect(new RomanNumber('I').toInt()).toEqual(1);
       expect(new RomanNumber('III').toInt()).toEqual(3);
       expect(new RomanNumber('IV').toInt()).toEqual(4);
-      expect(new RomanNumber('CDXXIX').toInt()).toEqual();
-      expect(new RomanNumber('MCDLXXXII').toInt()).toEqual(1);
-      expect(new RomanNumber('MCMLXXX').toInt()).toEqual(1);
-      expect(new RomanNumber('MMMMCMXCIX').toInt()).toEqual(1);
+      expect(new RomanNumber('CDXXIX').toInt()).toEqual(429);
+      expect(new RomanNumber('MCDLXXXII').toInt()).toEqual(1482);
+      expect(new RomanNumber('MCMLXXX').toInt()).toEqual(1980);
     });
   });
 

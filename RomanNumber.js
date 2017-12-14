@@ -15,7 +15,10 @@ const romanGroups = [
 ];
 const romanLetters = romanGroups.filter(
   group => group.roman.length === 1
-);
+).reduce(
+  (accu, { roman, arabic }) => ({ ...accu, [roman]: arabic }),
+  {}
+); // { M: 1000, D: 500 ... }
 
 
 export default class RomanNumber {
@@ -96,6 +99,22 @@ export default class RomanNumber {
     if (typeof value === 'number') {
       return value;
     }
-
+    // go through the string in reverse and if the crt letter is bigger then the previous,
+    // add it (as in 'V' after 'I' means add 5); otherwise subtract it (as in 'I' after 'V' means
+    // add -1, to the previously added 5
+    return value
+      .split('')
+      .reverse()
+      .reduce(({ number,lastCharAsInt }, crtChar) => {
+        const charAsInt = romanLetters[crtChar];
+        return {
+          number: charAsInt >= lastCharAsInt ? number + charAsInt : number - charAsInt,
+          lastCharAsInt: charAsInt,
+        }
+      }, {
+        number: 0,
+        lastCharAsInt: 0,
+      })
+      .number;
   }
 }

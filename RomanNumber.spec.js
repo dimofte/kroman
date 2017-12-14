@@ -50,6 +50,10 @@ describe('Roman Numerals', () => {
     it('should throw if arabic numerals are not integer', () => {
       expect(() => new RomanNumber(0.6)).toThrow(errorTypes.NUMBER_NOT_INTEGER);
     });
+    it('should throw for not-normalized roman string (lower case or spaces)', () => {
+      expect(() => new RomanNumber('vi')).toThrow(errorTypes.INVALID_NUMERAL);
+      expect(() => new RomanNumber('  II')).toThrow(errorTypes.INVALID_NUMERAL);
+    });
     it('should return roman numerals for roman input', () => {
       return;
       expect(new RomanNumber('III').toString()).toEqual('III');

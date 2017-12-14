@@ -1,0 +1,19 @@
+{
+  "name": "kroman",
+  "version": "0.0.1",
+  "description": "Technical test: a library to convert arabic to roman and viceversa",
+  "main": "RomanNumber.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimofte/kroman.git"
+  },
+  "author": "Bogdan Dimofte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimofte/kroman/issues"
+  },
+  "homepage": "https://github.com/dimofte/kroman#readme"
+}
